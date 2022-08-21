@@ -14,6 +14,7 @@ li3.setAttribute("class","choice");
 li4.setAttribute("class","choice");
 message = document.querySelector("#message");
 var secondsLeft = 75;
+var count = 0;
 
 start.addEventListener("click", function() {
     start.setAttribute("style","display: none;");
@@ -45,6 +46,7 @@ choicesEl.addEventListener("click", function(event) {
     var element = event.target;
     if(element.matches(".correct")) {
         message.textContent = "✅ Correct!";
+        count++;
     }
     else if(element.matches(".choice")) {
         message.textContent = "❌ Incorrect!";
@@ -183,7 +185,7 @@ function question7() {
 
 function finalScore() {
     h1El.textContent = "Quiz Completed!";
-    pEl.textContent = "Your final score: "; //will need to have score loaded
+    pEl.textContent = "Your final score: " + count;
     li1.remove();
     li2.remove();
     li3.remove();
@@ -206,6 +208,8 @@ function finalScore() {
         //direct to high scores page
     });
 }
+
+//need count stored and retrieved
 
 //add event listener to directly view list of high scores
 h3El.addEventListener("click", function() {

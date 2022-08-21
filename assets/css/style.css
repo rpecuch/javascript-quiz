@@ -1,12 +1,23 @@
-header, footer {
+header, 
+footer {
     background: pink;
     padding: 2%;
+}
+
+h3 {
+    cursor: pointer;
 }
 
 section {
     text-align: center;
     background-color: grey;
     padding: 1%;
+}
+
+h1,
+#p {
+    padding: 1%;
+    border-radius: 5px;
 }
 
 h1 {
@@ -16,4 +27,17 @@ h1 {
 
 #p {
     border: 2px dashed black;
+}
+
+#start {
+    cursor: pointer;
+}
+
+li {
+    list-style-type: lower-alpha;
+    cursor: pointer;
+}
+
+li:hover {
+    color: white;
 }
