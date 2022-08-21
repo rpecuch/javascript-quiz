@@ -15,11 +15,6 @@ li4.setAttribute("class","choice");
 message = document.querySelector("#message");
 var secondsLeft = 75;
 
-//add event listener to directly view list of high scores
-h3El.addEventListener("click", function() {
-    console.log("highscore");
-});
-
 start.addEventListener("click", function() {
     start.setAttribute("style","display: none;");
     h1El.textContent = "Question 1";
@@ -40,7 +35,7 @@ start.addEventListener("click", function() {
          if(secondsLeft === 0) {
             clearInterval(timerInterval);
             h3El.textContent = "";
-            //need to direct to final score page when time is up
+            finalScore();
         }
     }, 1500);
 });
@@ -163,6 +158,8 @@ function question6() {
     })
 }
 
+//need interval to be cleared when question 7 completed
+
 function question7() {
     h1El.textContent = "Question 7";
     pEl.textContent = "Insert question 7 here?";
@@ -185,7 +182,6 @@ function question7() {
 }
 
 function finalScore() {
-    //need to clear interval
     h1El.textContent = "Quiz Completed!";
     pEl.textContent = "Your final score: "; //will need to have score loaded
     li1.remove();
@@ -193,7 +189,7 @@ function finalScore() {
     li3.remove();
     li4.remove();
     message.textContent = "";
-    //append form to fill out
+    
     formEl = document.createElement("form");
     labelEl = document.createElement("label");
     labelEl.textContent = "Enter initials:"
@@ -210,3 +206,12 @@ function finalScore() {
         //direct to high scores page
     });
 }
+
+//add event listener to directly view list of high scores
+h3El.addEventListener("click", function() {
+    console.log("highscore");
+    h3El.textContent = "Go back";
+    h1El.textContent = "High Scores";
+    pEl.remove();
+    //either change text on button or make new button
+});
