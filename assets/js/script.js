@@ -33,12 +33,13 @@ start.addEventListener("click", function() {
     li2.textContent = "Choice 2";
     li3.textContent = "Choice 3";
     li4.textContent = "Choice 4";
-    
+
     var timerInterval = setInterval(function(){
         secondsLeft--;
-         h3El.textContent = secondsLeft;
+         h3El.textContent = secondsLeft + " seconds left";
          if(secondsLeft === 0) {
             clearInterval(timerInterval);
+            h3El.textContent = "";
             //need to direct to final score page when time is up
         }
     }, 1500);
@@ -55,10 +56,7 @@ choicesEl.addEventListener("click", function(event) {
         secondsLeft = secondsLeft - 5;
     }
     question2();
-})
-
-//debug:appears to go down by more than 5 seconds when incorrect answer chosen. also on q4 and q6 and q7 time goes down a bunch when correct answer is chosen
-//also interval is not being cleared when time reaches 0
+});
 
 function question2() {
     h1El.textContent = "Question 2";
@@ -76,7 +74,6 @@ function question2() {
         }
         else if(element.matches(".choice")) {
             message.textContent = "Incorrect!";
-            secondsLeft = secondsLeft - 5;
         }
         question3();
     })
@@ -98,7 +95,6 @@ function question3() {
         }
         else if(element.matches(".choice")) {
             message.textContent = "Incorrect!";
-            secondsLeft = secondsLeft - 5;
         }
         question4();
     })
@@ -120,7 +116,6 @@ function question4() {
         }
         else if(element.matches(".choice")) {
             message.textContent = "Incorrect!";
-            secondsLeft = secondsLeft - 5;
         }
         question5();
     })
@@ -142,7 +137,6 @@ function question5() {
         }
         else if(element.matches(".choice")) {
             message.textContent = "Incorrect!";
-            secondsLeft = secondsLeft - 5;
         }
         question6();
     })
@@ -164,7 +158,6 @@ function question6() {
         }
         else if(element.matches(".choice")) {
             message.textContent = "Incorrect!";
-            secondsLeft = secondsLeft - 5;
         }
         question7();
     })
@@ -186,13 +179,13 @@ function question7() {
         }
         else if(element.matches(".choice")) {
             message.textContent = "Incorrect!";
-            secondsLeft = secondsLeft - 5;
         }
         finalScore();
     })
 }
 
 function finalScore() {
+    //need to clear interval
     h1El.textContent = "Quiz Completed!";
     pEl.textContent = "Your final score: "; //will need to have score loaded
     li1.remove();
