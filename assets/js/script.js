@@ -18,36 +18,36 @@ var secondsLeft = 75;
 start.addEventListener("click", function() {
     start.setAttribute("style","display: none;");
     h1El.textContent = "Question 1";
-    pEl.textContent = "Insert question here?";
+    pEl.textContent = "Which of the following is NOT one of the JavaScript primitive data types?";
     container.appendChild(choicesEl);
     choicesEl.appendChild(li1);
     choicesEl.appendChild(li2);
     choicesEl.appendChild(li3);
     choicesEl.appendChild(li4);
-    li1.textContent = "Correct Choice";
-    li2.textContent = "Choice 2";
-    li3.textContent = "Choice 3";
-    li4.textContent = "Choice 4";
+    li1.textContent = "Character";
+    li2.textContent = "Boolean";
+    li3.textContent = "String";
+    li4.textContent = "Number";
 
     var timerInterval = setInterval(function(){
         secondsLeft--;
-         h3El.textContent = secondsLeft + " seconds left";
+         h3El.textContent = "🕓 " + secondsLeft + " seconds left";
          if(secondsLeft === 0) {
             clearInterval(timerInterval);
             h3El.textContent = "";
             finalScore();
         }
-    }, 1500);
+    }, 1000);
 });
 
 choicesEl.addEventListener("click", function(event) {
     li1.setAttribute("class","correct");
     var element = event.target;
     if(element.matches(".correct")) {
-        message.textContent = "Correct!";
+        message.textContent = "✅ Correct!";
     }
     else if(element.matches(".choice")) {
-        message.textContent = "Incorrect!";
+        message.textContent = "❌ Incorrect!";
         secondsLeft = secondsLeft - 5;
     }
     question2();
@@ -55,20 +55,20 @@ choicesEl.addEventListener("click", function(event) {
 
 function question2() {
     h1El.textContent = "Question 2";
-    pEl.textContent = "Insert question 2 here?";
-    li1.textContent = "Choice";
-    li2.textContent = "Correct Choice";
-    li3.textContent = "Choice 3";
-    li4.textContent = "Choice 4";
+    pEl.textContent = "What is the expression 'x++' short for?";
+    li1.textContent = "x = 2x";
+    li2.textContent = "x = x + 1";
+    li3.textContent = "x = x + 2";
+    li4.textContent = "This is not a valid expression";
     li1.setAttribute("class","choice");
     li2.setAttribute("class","correct");
     choicesEl.addEventListener("click", function(event) {
         var element = event.target;
         if(element.matches(".correct")) {
-            message.textContent = "Correct!";
+            message.textContent = "✅ Correct!";
         }
         else if(element.matches(".choice")) {
-            message.textContent = "Incorrect!";
+            message.textContent = "❌ Incorrect!";
         }
         question3();
     })
@@ -76,20 +76,20 @@ function question2() {
 
 function question3() {
     h1El.textContent = "Question 3";
-    pEl.textContent = "Insert question 3 here?";
-    li1.textContent = "Choice1";
-    li2.textContent = "Choice2";
-    li3.textContent = "Choice 3";
-    li4.textContent = "Correct Choice 4";
+    pEl.textContent = "Which operator should be used to test strict equality?";
+    li1.textContent = "!==";
+    li2.textContent = "=";
+    li3.textContent = "==";
+    li4.textContent = "===";
     li2.setAttribute("class","choice");
     li4.setAttribute("class","correct");
     choicesEl.addEventListener("click", function(event) {
         var element = event.target;
         if(element.matches(".correct")) {
-            message.textContent = "Correct!";
+            message.textContent = "✅ Correct!";
         }
         else if(element.matches(".choice")) {
-            message.textContent = "Incorrect!";
+            message.textContent = "❌ Incorrect!";
         }
         question4();
     })
@@ -97,20 +97,20 @@ function question3() {
 
 function question4() {
     h1El.textContent = "Question 4";
-    pEl.textContent = "Insert question 4 here?";
-    li1.textContent = "Correct Choice1";
-    li2.textContent = "Choice2";
-    li3.textContent = "Choice 3";
-    li4.textContent = "Choice 4";
+    pEl.textContent = "Which of the following methods is used to remove the first element from an array?";
+    li1.textContent = "shift()";
+    li2.textContent = "pop()";
+    li3.textContent = "push()";
+    li4.textContent = "replace()";
     li4.setAttribute("class","choice");
     li1.setAttribute("class","correct");
     choicesEl.addEventListener("click", function(event) {
         var element = event.target;
         if(element.matches(".correct")) {
-            message.textContent = "Correct!";
+            message.textContent = "✅ Correct!";
         }
         else if(element.matches(".choice")) {
-            message.textContent = "Incorrect!";
+            message.textContent = "❌ Incorrect!";
         }
         question5();
     })
@@ -118,20 +118,20 @@ function question4() {
 
 function question5() {
     h1El.textContent = "Question 5";
-    pEl.textContent = "Insert question 5 here?";
-    li1.textContent = "Choice1";
-    li2.textContent = "Choice2";
-    li3.textContent = "Correct Choice 3";
-    li4.textContent = "Choice 4";
+    pEl.textContent = "Which of the following describes the functionality of the Math.random() method?";
+    li1.textContent = "Returns a random number between 1 and 99 (exclusive)";
+    li2.textContent = "Returns a random number between 1 and 99 (inclusive)";
+    li3.textContent = "Returns a random number between 0 and 1 (exclusive)";
+    li4.textContent = "Returns a random number between 0 and 1 (inclusive";
     li1.setAttribute("class","choice");
     li3.setAttribute("class","correct");
     choicesEl.addEventListener("click", function(event) {
         var element = event.target;
         if(element.matches(".correct")) {
-            message.textContent = "Correct!";
+            message.textContent = "✅ Correct!";
         }
         else if(element.matches(".choice")) {
-            message.textContent = "Incorrect!";
+            message.textContent = "❌ Incorrect!";
         }
         question6();
     })
@@ -139,20 +139,20 @@ function question5() {
 
 function question6() {
     h1El.textContent = "Question 6";
-    pEl.textContent = "Insert question 6 here?";
-    li1.textContent = "Choice1";
-    li2.textContent = "Correct Choice2";
-    li3.textContent = "Choice 3";
-    li4.textContent = "Choice 4";
+    pEl.textContent = "Which of the following is proper syntax to invoke a function when an element is clicked on?";
+    li1.textContent = "element.Click(function())";
+    li2.textContent = "element.addEventListener('click', function())";
+    li3.textContent = "element.function = onClick";
+    li4.textContent = "element.addEvent('click', function())";
     li3.setAttribute("class","choice");
     li2.setAttribute("class","correct");
     choicesEl.addEventListener("click", function(event) {
         var element = event.target;
         if(element.matches(".correct")) {
-            message.textContent = "Correct!";
+            message.textContent = "✅ Correct!";
         }
         else if(element.matches(".choice")) {
-            message.textContent = "Incorrect!";
+            message.textContent = "❌ Incorrect!";
         }
         question7();
     })
@@ -162,20 +162,20 @@ function question6() {
 
 function question7() {
     h1El.textContent = "Question 7";
-    pEl.textContent = "Insert question 7 here?";
-    li1.textContent = "Choice1";
-    li2.textContent = "Choice2";
-    li3.textContent = "Choice 3";
-    li4.textContent = "Correct Choice 4";
+    pEl.textContent = "Which of the following converts a JSON string into a JavaScript object?";
+    li1.textContent = "JSON.extract()";
+    li2.textContent = "JSON.destringify()";
+    li3.textContent = "JSON.stringify()";
+    li4.textContent = "JSON.parse()";
     li2.setAttribute("class","choice");
     li4.setAttribute("class","correct");
     choicesEl.addEventListener("click", function(event) {
         var element = event.target;
         if(element.matches(".correct")) {
-            message.textContent = "Correct!";
+            message.textContent = "✅ Correct!";
         }
         else if(element.matches(".choice")) {
-            message.textContent = "Incorrect!";
+            message.textContent = "❌ Incorrect!";
         }
         finalScore();
     })
