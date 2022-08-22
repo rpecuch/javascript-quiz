@@ -16,7 +16,8 @@ message = document.querySelector("#message");
 var secondsLeft = 75;
 var count = 0;
 
-start.addEventListener("click", function() {
+function startGame(event){
+    event.preventDefault();
     start.setAttribute("style","display: none;");
     h1El.textContent = "Question 1";
     pEl.textContent = "Which of the following is NOT one of the JavaScript primitive data types?";
@@ -39,7 +40,9 @@ start.addEventListener("click", function() {
             finalScore();
         }
     }, 1000);
-});
+}
+
+start.addEventListener("click", startGame);
 
 choicesEl.addEventListener("click", function(event) {
     li1.setAttribute("class","correct");
@@ -160,8 +163,7 @@ function question6() {
     })
 }
 
-//need interval to be cleared when question 7 completed
-
+//not giving feedback for this question
 function question7() {
     h1El.textContent = "Question 7";
     pEl.textContent = "Which of the following converts a JSON string into a JavaScript object?";
@@ -183,7 +185,10 @@ function question7() {
     })
 }
 
+//need interval to be cleared when question 7 completed
 function finalScore() {
+    // clearInterval(timerInterval);
+    // h3El.textContent = "";
     h1El.textContent = "Quiz Completed!";
     pEl.textContent = "Your final score: " + count;
     li1.remove();
@@ -204,7 +209,16 @@ function finalScore() {
     formEl.appendChild(labelEl);
     formEl.appendChild(inputEl);
     formEl.appendChild(submitEl);
+
+    gameStats = {
+        initials: inputEl.value,
+        score: count
+    }
+
+//need to store score
     submitEl.addEventListener("click", function () {
+        localStorage.setItem("stats", JSON.stringify(gameStats));
+        console.log(gameStats);
         //direct to high scores page
     });
 }
@@ -231,8 +245,7 @@ h3El.addEventListener("click", function() {
         console.log("clear scores");
     })
 
-    //clicking go back needs to restart app maybe by reloading page
     goBack.addEventListener("click", function () {
-        console.log("go back");
+        location.reload();
     })
 });
