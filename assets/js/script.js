@@ -14,6 +14,7 @@ li3.setAttribute("class","choice");
 li4.setAttribute("class","choice");
 message = document.querySelector("#message");
 var secondsLeft = 75;
+var timerInterval;
 var count = 0;
 
 function startGame(event){
@@ -31,12 +32,10 @@ function startGame(event){
     li3.textContent = "String";
     li4.textContent = "Number";
 
-    var timerInterval = setInterval(function(){
+    timerInterval = setInterval(function(){
         secondsLeft--;
          h3El.textContent = "🕓 " + secondsLeft + " seconds left";
          if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            h3El.textContent = "";
             finalScore();
         }
     }, 1000);
@@ -185,10 +184,9 @@ function question7() {
     })
 }
 
-//need interval to be cleared when question 7 completed
 function finalScore() {
-    // clearInterval(timerInterval);
-    // h3El.textContent = "";
+    clearInterval(timerInterval);
+    h3El.textContent = "";
     h1El.textContent = "Quiz Completed!";
     pEl.textContent = "Your final score: " + count;
     li1.remove();
@@ -226,18 +224,11 @@ function finalScore() {
         }
         localStorage.setItem("highScores", JSON.stringify(storedScores));
     })
-
-    submitEl.addEventListener("click", function () {
-        //direct to high scores page
-        // highScores;
-    });
-
-    //this works but only for a second then redirects to home page
-    submitEl.addEventListener("click", highScores);
 }
 
 h3El.addEventListener("click", highScores);
 
+//2 issues to address
 function highScores (event) {
     event.preventDefault;
     h3El.textContent = "";
@@ -259,20 +250,20 @@ function highScores (event) {
 
 
     clear = document.createElement("button");
-    goBack = document.createElement("button");
+    playAgain = document.createElement("button");
     clear.textContent = "Clear Scores";
-    goBack.textContent = "Go Back";
+    playAgain.textContent = "Play Again!";
     container.appendChild(clear);
-    container.appendChild(goBack);
+    container.appendChild(playAgain);
     clear.setAttribute("class","button");
-    goBack.setAttribute("class","button");
-    //clicking clear needs to clear storage
+    playAgain.setAttribute("class","button");
+    //clicking clear clears the storage but does not clear the list in front of the user so you can't see this happen until you view high scores again from homepage
     clear.addEventListener("click", function() {
-        console.log("clear scores");
-        //event listener working just add code
+        localStorage.clear();
+        location.reload();
     })
 
-    goBack.addEventListener("click", function () {
+    playAgain.addEventListener("click", function () {
         location.reload();
     })
 }
