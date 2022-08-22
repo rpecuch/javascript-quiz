@@ -210,27 +210,54 @@ function finalScore() {
     formEl.appendChild(inputEl);
     formEl.appendChild(submitEl);
 
-    gameStats = {
-        initials: inputEl.value,
-        score: count
-    }
+    inputEl.addEventListener("input", function () {
+        inputEl.value = inputEl.value.toUpperCase();
+        let currentScore = [ {
+            name: inputEl.value,
+            score: count
+        }
+        ]
+        let storedScores = JSON.parse(localStorage.getItem("highScores"));
+        if (storedScores !== null) {
+            storedScores.push(currentScore[0]);
+        }
+        else {
+            storedScores = currentScore;
+        }
+        localStorage.setItem("highScores", JSON.stringify(storedScores));
+    })
 
-//need to store score
     submitEl.addEventListener("click", function () {
-        localStorage.setItem("stats", JSON.stringify(gameStats));
-        console.log(gameStats);
         //direct to high scores page
+        // highScores;
     });
+
+    //this works but only for a second then redirects to home page
+    submitEl.addEventListener("click", highScores);
 }
 
-//need count stored and retrieved
+h3El.addEventListener("click", highScores);
 
-h3El.addEventListener("click", function() {
+function highScores (event) {
+    event.preventDefault;
     h3El.textContent = "";
-    h1El.textContent = "High Scores";
+    h1El.textContent = "High Scores:";
     pEl.remove();
     start.remove();
-    //needs to list scores from storage
+
+    //listing from storage but if DF scored 2 is listing D2 and DF2
+
+    let storedScores = JSON.parse(localStorage.getItem("highScores"));
+    if(storedScores !== null) {
+        for(var i=0; i<storedScores.length; i++) {
+            var pastScore = storedScores[i];
+            var displayScore = document.createElement("p");
+            displayScore.textContent = pastScore.name + " " + pastScore.score;
+            container.appendChild(displayScore);
+        }
+    }
+
+
     clear = document.createElement("button");
     goBack = document.createElement("button");
     clear.textContent = "Clear Scores";
@@ -239,13 +266,13 @@ h3El.addEventListener("click", function() {
     container.appendChild(goBack);
     clear.setAttribute("class","button");
     goBack.setAttribute("class","button");
-    
     //clicking clear needs to clear storage
     clear.addEventListener("click", function() {
         console.log("clear scores");
+        //event listener working just add code
     })
 
     goBack.addEventListener("click", function () {
         location.reload();
     })
-});
+}
