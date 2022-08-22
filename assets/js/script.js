@@ -211,11 +211,28 @@ function finalScore() {
 
 //need count stored and retrieved
 
-//add event listener to directly view list of high scores
 h3El.addEventListener("click", function() {
-    console.log("highscore");
-    h3El.textContent = "Go back";
+    h3El.textContent = "";
     h1El.textContent = "High Scores";
     pEl.remove();
-    //either change text on button or make new button
+    start.remove();
+    //needs to list scores from storage
+    clear = document.createElement("button");
+    goBack = document.createElement("button");
+    clear.textContent = "Clear Scores";
+    goBack.textContent = "Go Back";
+    container.appendChild(clear);
+    container.appendChild(goBack);
+    clear.setAttribute("class","button");
+    goBack.setAttribute("class","button");
+    
+    //clicking clear needs to clear storage
+    clear.addEventListener("click", function() {
+        console.log("clear scores");
+    })
+
+    //clicking go back needs to restart app maybe by reloading page
+    goBack.addEventListener("click", function () {
+        console.log("go back");
+    })
 });

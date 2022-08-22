@@ -41,3 +41,7 @@ li {
 li:hover {
     color: white;
 }
+
+.button {
+    cursor: pointer;
+}
