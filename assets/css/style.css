@@ -45,3 +45,7 @@ li:hover {
 .button {
     cursor: pointer;
 }
+
+.score {
+    list-style-type: none;
+}

@@ -228,22 +228,24 @@ function finalScore() {
 
 h3El.addEventListener("click", highScores);
 
-//1 issue to address
 function highScores (event) {
     event.preventDefault;
     h3El.textContent = "";
     h1El.textContent = "High Scores:";
     pEl.remove();
     start.remove();
+    scoresList = document.createElement("ol");
+    container.appendChild(scoresList);
 
     let storedScores = JSON.parse(localStorage.getItem("highScores"));
     if(storedScores !== null) {
         storedScores.sort(function(a, b){return b.score-a.score});
         for(var i=0; i<storedScores.length; i++) {
             var pastScore = storedScores[i];
-            var displayScore = document.createElement("p");
+            var displayScore = document.createElement("li");
+            displayScore.setAttribute("class","score");
             displayScore.textContent = pastScore.name + " " + pastScore.score;
-            container.appendChild(displayScore);
+            scoresList.appendChild(displayScore);
         }
     }
 
@@ -256,12 +258,10 @@ function highScores (event) {
     container.appendChild(playAgain);
     clear.setAttribute("class","button");
     playAgain.setAttribute("class","button");
-    //clicking clear clears the storage but does not clear the list in front of the user so you can't see this happen until you view high scores again from homepage
+
     clear.addEventListener("click", function() {
         localStorage.clear();
-        //this only cleared the bottom one
-        // container.removeChild(displayScore);
-        location.reload();
+        scoresList.innerHTML = "";
     })
 
     playAgain.addEventListener("click", function () {
