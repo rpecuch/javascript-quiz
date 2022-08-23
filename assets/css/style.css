@@ -29,7 +29,8 @@ h1 {
     border: 2px dashed black;
 }
 
-#start {
+#start,
+#advance {
     cursor: pointer;
 }
 
