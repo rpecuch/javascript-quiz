@@ -208,7 +208,7 @@ function finalScore() {
     formEl.appendChild(inputEl);
     formEl.appendChild(submitEl);
 
-    inputEl.addEventListener("input", function () {
+    submitEl.addEventListener("click", function () {
         inputEl.value = inputEl.value.toUpperCase();
         let currentScore = [ {
             name: inputEl.value,
@@ -228,7 +228,7 @@ function finalScore() {
 
 h3El.addEventListener("click", highScores);
 
-//2 issues to address
+//1 issue to address
 function highScores (event) {
     event.preventDefault;
     h3El.textContent = "";
@@ -236,10 +236,9 @@ function highScores (event) {
     pEl.remove();
     start.remove();
 
-    //listing from storage but if DF scored 2 is listing D2 and DF2
-
     let storedScores = JSON.parse(localStorage.getItem("highScores"));
     if(storedScores !== null) {
+        storedScores.sort(function(a, b){return b.score-a.score});
         for(var i=0; i<storedScores.length; i++) {
             var pastScore = storedScores[i];
             var displayScore = document.createElement("p");
@@ -260,6 +259,8 @@ function highScores (event) {
     //clicking clear clears the storage but does not clear the list in front of the user so you can't see this happen until you view high scores again from homepage
     clear.addEventListener("click", function() {
         localStorage.clear();
+        //this only cleared the bottom one
+        // container.removeChild(displayScore);
         location.reload();
     })
 
