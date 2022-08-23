@@ -8,9 +8,21 @@ Furthermore, this application serves as a practice tool for technical assessment
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+To access this application, visit the following URL: [https://rpecuch.github.io/javascript-quiz](https://rpecuch.github.io/javascript-quiz).
 
-![alt text](assets/images/screenshot.png)
+![home page of quiz with instructions](./assets/images/home-page.png)
+
+To start the quiz, click on the "Start Quiz" button.
+
+![sample quiz question](./assets/images/quiz-question.png)
+
+Users will be taken through 7 multiple-choice questions as time permits.
+
+![display of final score and input field for initials](./assets/images/quiz-completed.png)
+
+At the end of the quiz, the user will be prompted to enter their initials to save their score. To view the list of high scores, click on the "View High Scores" button in the top left corner.
+
+![list of high scores](./assets/images/high-scores.png)
 
 ## License
 
