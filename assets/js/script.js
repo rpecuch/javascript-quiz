@@ -13,6 +13,10 @@ li2.setAttribute("class","choice");
 li3.setAttribute("class","choice");
 li4.setAttribute("class","choice");
 message = document.querySelector("#message");
+finishEl = document.createElement("button");
+finishEl.textContent = "Finish";
+container.appendChild(finishEl);
+finishEl.setAttribute("style", "display: none;");
 var secondsLeft = 75;
 var timerInterval;
 var count = 0;
@@ -126,7 +130,7 @@ function question5() {
     li1.textContent = "Returns a random number between 1 and 99 (exclusive)";
     li2.textContent = "Returns a random number between 1 and 99 (inclusive)";
     li3.textContent = "Returns a random number between 0 and 1 (exclusive)";
-    li4.textContent = "Returns a random number between 0 and 1 (inclusive";
+    li4.textContent = "Returns a random number between 0 and 1 (inclusive)";
     li1.setAttribute("class","choice");
     li3.setAttribute("class","correct");
     choicesEl.addEventListener("click", function(event) {
@@ -162,7 +166,6 @@ function question6() {
     })
 }
 
-//not giving feedback for this question
 function question7() {
     h1El.textContent = "Question 7";
     pEl.textContent = "Which of the following converts a JSON string into a JavaScript object?";
@@ -180,8 +183,9 @@ function question7() {
         else if(element.matches(".choice")) {
             message.textContent = "❌ Incorrect!";
         }
-        finalScore();
+        finishEl.setAttribute("style", "display: block;");
     })
+    finishEl.addEventListener("click", finalScore);
 }
 
 function finalScore() {
@@ -193,6 +197,7 @@ function finalScore() {
     li2.remove();
     li3.remove();
     li4.remove();
+    finishEl.remove();
     message.textContent = "";
     
     formEl = document.createElement("form");
