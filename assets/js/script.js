@@ -235,7 +235,8 @@ h3El.addEventListener("click", highScores);
 
 function highScores (event) {
     event.preventDefault;
-    h3El.textContent = "";
+    // h3El.textContent = "";
+    h3El.style.display = "none";
     h1El.textContent = "High Scores:";
     pEl.remove();
     start.remove();
@@ -262,7 +263,9 @@ function highScores (event) {
     container.appendChild(clear);
     container.appendChild(playAgain);
     clear.setAttribute("class","button");
+    clear.setAttribute("id", "clear-btn");
     playAgain.setAttribute("class","button");
+    playAgain.setAttribute("id", "play-again");
 
     clear.addEventListener("click", function() {
         localStorage.clear();

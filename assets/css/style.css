@@ -30,16 +30,15 @@ h1,
     border-radius: 5px;
 }
 
-/* h1 {
-    border: 2px solid black;
-    display:inline-block;
-} */
-
-#p {
+#container {
     border: 5px double black;
 }
 
-#start:hover {
+#start {
+    margin-top: 2%;
+}
+
+button:hover {
     background-color: black;
     color: white;
 }
@@ -64,4 +63,9 @@ li:hover {
 
 .score {
     list-style-type: none;
+}
+
+#clear-btn,
+#play-again {
+    margin-bottom: 1%;
 }
