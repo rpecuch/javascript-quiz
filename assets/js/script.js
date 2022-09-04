@@ -25,6 +25,9 @@ var count = 0;
 var toQ2 = document.createElement("button");
 var toQ3 = document.createElement("button");
 var toQ4 = document.createElement("button");
+var toQ5 = document.createElement("button");
+var toQ6 = document.createElement("button");
+var toQ7 = document.createElement("button");
 
 //starts the game and displays question 1
 function startGame(event){
@@ -108,92 +111,80 @@ function question3(event) {
 
 toQ3.addEventListener("click", question3);
 
+function question4(event) {
+    event.preventDefault();
+    h1El.textContent = "Question 4";
+    pEl.textContent = "Which of the following methods is used to remove the first element from an array?";
+    li1.textContent = "shift()";
+    li2.textContent = "pop()";
+    li3.textContent = "push()";
+    li4.textContent = "replace()";
+    li4.setAttribute("class","choice");
+    li1.setAttribute("class","correct");
+    message.textContent = "";
+    toQ4.remove();
+    toQ5.setAttribute("class", "advance-btn");
+    toQ5.textContent = "Next";
+    section.appendChild(toQ5);
+}
+
 toQ4.addEventListener("click", question4);
 
-// function question4() {
-//     h1El.textContent = "Question 4";
-//     pEl.textContent = "Which of the following methods is used to remove the first element from an array?";
-//     li1.textContent = "shift()";
-//     li2.textContent = "pop()";
-//     li3.textContent = "push()";
-//     li4.textContent = "replace()";
-//     li4.setAttribute("class","choice");
-//     li1.setAttribute("class","correct");
-//     choicesEl.addEventListener("click", function(event) {
-//         var element = event.target;
-//         if(element.matches(".correct")) {
-//             message.textContent = "✅ Correct!";
-//         }
-//         else if(element.matches(".choice")) {
-//             message.textContent = "❌ Incorrect!";
-//         }
-//         question5();
-//     })
-// }
+function question5(event) {
+    event.preventDefault();
+    h1El.textContent = "Question 5";
+    pEl.textContent = "Which of the following describes the functionality of the Math.random() method?";
+    li1.textContent = "Returns a random number between 1 and 99 (exclusive)";
+    li2.textContent = "Returns a random number between 1 and 99 (inclusive)";
+    li3.textContent = "Returns a random number between 0 and 1 (exclusive)";
+    li4.textContent = "Returns a random number between 0 and 1 (inclusive)";
+    li1.setAttribute("class","choice");
+    li3.setAttribute("class","correct");
+    message.textContent = "";
+    toQ5.remove();
+    toQ6.setAttribute("class", "advance-btn");
+    toQ6.textContent = "Next";
+    section.appendChild(toQ6);
+}
 
-// function question5() {
-//     h1El.textContent = "Question 5";
-//     pEl.textContent = "Which of the following describes the functionality of the Math.random() method?";
-//     li1.textContent = "Returns a random number between 1 and 99 (exclusive)";
-//     li2.textContent = "Returns a random number between 1 and 99 (inclusive)";
-//     li3.textContent = "Returns a random number between 0 and 1 (exclusive)";
-//     li4.textContent = "Returns a random number between 0 and 1 (inclusive)";
-//     li1.setAttribute("class","choice");
-//     li3.setAttribute("class","correct");
-//     choicesEl.addEventListener("click", function(event) {
-//         var element = event.target;
-//         if(element.matches(".correct")) {
-//             message.textContent = "✅ Correct!";
-//         }
-//         else if(element.matches(".choice")) {
-//             message.textContent = "❌ Incorrect!";
-//         }
-//         question6();
-//     })
-// }
+toQ5.addEventListener("click", question5);
 
-// function question6() {
-//     h1El.textContent = "Question 6";
-//     pEl.textContent = "Which of the following is proper syntax to invoke a function when an element is clicked on?";
-//     li1.textContent = "element.Click(function())";
-//     li2.textContent = "element.addEventListener('click', function())";
-//     li3.textContent = "element.function = onClick";
-//     li4.textContent = "element.addEvent('click', function())";
-//     li3.setAttribute("class","choice");
-//     li2.setAttribute("class","correct");
-//     choicesEl.addEventListener("click", function(event) {
-//         var element = event.target;
-//         if(element.matches(".correct")) {
-//             message.textContent = "✅ Correct!";
-//         }
-//         else if(element.matches(".choice")) {
-//             message.textContent = "❌ Incorrect!";
-//         }
-//         question7();
-//     })
-// }
+function question6(event) {
+    event.preventDefault();
+    h1El.textContent = "Question 6";
+    pEl.textContent = "Which of the following is proper syntax to invoke a function when an element is clicked on?";
+    li1.textContent = "element.Click(function())";
+    li2.textContent = "element.addEventListener('click', function())";
+    li3.textContent = "element.function = onClick";
+    li4.textContent = "element.addEvent('click', function())";
+    li3.setAttribute("class","choice");
+    li2.setAttribute("class","correct");
+    message.textContent = "";
+    toQ6.remove();
+    toQ7.setAttribute("class", "advance-btn");
+    toQ7.textContent = "Next";
+    section.appendChild(toQ7);
+}
 
-// function question7() {
-//     h1El.textContent = "Question 7";
-//     pEl.textContent = "Which of the following converts a JSON string into a JavaScript object?";
-//     li1.textContent = "JSON.extract()";
-//     li2.textContent = "JSON.destringify()";
-//     li3.textContent = "JSON.stringify()";
-//     li4.textContent = "JSON.parse()";
-//     li2.setAttribute("class","choice");
-//     li4.setAttribute("class","correct");
-//     choicesEl.addEventListener("click", function(event) {
-//         var element = event.target;
-//         if(element.matches(".correct")) {
-//             message.textContent = "✅ Correct!";
-//         }
-//         else if(element.matches(".choice")) {
-//             message.textContent = "❌ Incorrect!";
-//         }
-//         finishEl.setAttribute("style", "display: block;");
-//     })
-//     finishEl.addEventListener("click", finalScore);
-// }
+toQ6.addEventListener("click", question6);
+
+function question7(event) {
+    event.preventDefault();
+    h1El.textContent = "Question 7";
+    pEl.textContent = "Which of the following converts a JSON string into a JavaScript object?";
+    li1.textContent = "JSON.extract()";
+    li2.textContent = "JSON.destringify()";
+    li3.textContent = "JSON.stringify()";
+    li4.textContent = "JSON.parse()";
+    li2.setAttribute("class","choice");
+    li4.setAttribute("class","correct");
+    message.textContent = "";
+    toQ6.remove();
+    //now direct to final score page
+    // finishEl.addEventListener("click", finalScore);
+}
+
+toQ7.addEventListener("click", question7);
 
 // function finalScore() {
 //     clearInterval(timerInterval);
