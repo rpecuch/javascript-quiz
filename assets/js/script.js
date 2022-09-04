@@ -14,11 +14,6 @@ li2.setAttribute("class","choice");
 li3.setAttribute("class","choice");
 li4.setAttribute("class","choice");
 message = document.querySelector("#message");
-finishEl = document.createElement("button");
-finishEl.textContent = "Finish";
-container.appendChild(finishEl);
-//i do not like where this is displaying
-finishEl.setAttribute("style", "display: none;");
 var secondsLeft = 75;
 var timerInterval;
 var count = 0;
@@ -28,6 +23,8 @@ var toQ4 = document.createElement("button");
 var toQ5 = document.createElement("button");
 var toQ6 = document.createElement("button");
 var toQ7 = document.createElement("button");
+var finishBtn = document.createElement("button");
+finishBtn.textContent = "Finish";
 
 //starts the game and displays question 1
 function startGame(event){
@@ -179,101 +176,113 @@ function question7(event) {
     li2.setAttribute("class","choice");
     li4.setAttribute("class","correct");
     message.textContent = "";
-    toQ6.remove();
-    //now direct to final score page
-    // finishEl.addEventListener("click", finalScore);
+    toQ7.remove();
+    finishBtn.setAttribute("class", "advance-btn");
+    finishBtn.textContent = "Finish";
+    section.appendChild(finishBtn);
 }
 
 toQ7.addEventListener("click", question7);
 
-// function finalScore() {
-//     clearInterval(timerInterval);
-//     h3El.style.display = "none";
-//     h1El.textContent = "Quiz Completed!";
-//     pEl.textContent = "Your final score: " + count;
-//     li1.remove();
-//     li2.remove();
-//     li3.remove();
-//     li4.remove();
-//     finishEl.remove();
-//     message.textContent = "";
+function finalScore(event) {
+    event.preventDefault();
+    clearInterval(timerInterval);
+    h3El.style.display = "none";
+    h1El.textContent = "Quiz Completed!";
+    pEl.textContent = "Your final score: " + count;
+    li1.remove();
+    li2.remove();
+    li3.remove();
+    li4.remove();
+    finishBtn.remove();
+    if(count > 5) {
+        message.textContent = "Great job! 🏆";
+    }
+    else if(count < 4) {
+        message.textContent = "Better luck next time... 👎"
+    }
+    else {
+        message.textContent = "Getting there! 🤔"
+    }
     
-//     formEl = document.createElement("form");
-//     labelEl = document.createElement("label");
-//     labelEl.textContent = "Enter initials:"
-//     labelEl.setAttribute("for","initials");
-//     inputEl = document.createElement("input");
-//     inputEl.setAttribute("name","initials");
-//     submitEl = document.createElement("button");
-//     submitEl.setAttribute("class", "button");
-//     submitEl.setAttribute("id", "submit-btn");
-//     submitEl.textContent = "Submit";
-//     container.appendChild(formEl);
-//     formEl.appendChild(labelEl);
-//     formEl.appendChild(inputEl);
-//     formEl.appendChild(submitEl);
+    formEl = document.createElement("form");
+    labelEl = document.createElement("label");
+    labelEl.textContent = "Enter initials:"
+    labelEl.setAttribute("for","initials");
+    inputEl = document.createElement("input");
+    inputEl.setAttribute("name","initials");
+    submitEl = document.createElement("button");
+    submitEl.setAttribute("class", "button");
+    submitEl.setAttribute("id", "submit-btn");
+    submitEl.textContent = "Submit";
+    container.appendChild(formEl);
+    formEl.appendChild(labelEl);
+    formEl.appendChild(inputEl);
+    formEl.appendChild(submitEl);
 
-//     submitEl.addEventListener("click", function () {
-//         inputEl.value = inputEl.value.toUpperCase();
-//         let currentScore = [ {
-//             name: inputEl.value,
-//             score: count
-//         }
-//         ]
-//         let storedScores = JSON.parse(localStorage.getItem("highScores"));
-//         if (storedScores !== null) {
-//             storedScores.push(currentScore[0]);
-//         }
-//         else {
-//             storedScores = currentScore;
-//         }
-//         localStorage.setItem("highScores", JSON.stringify(storedScores));
-//     })
-// }
+    submitEl.addEventListener("click", function () {
+        inputEl.value = inputEl.value.toUpperCase();
+        let currentScore = [ {
+            name: inputEl.value,
+            score: count
+        }
+        ]
+        let storedScores = JSON.parse(localStorage.getItem("highScores"));
+        if (storedScores !== null) {
+            storedScores.push(currentScore[0]);
+        }
+        else {
+            storedScores = currentScore;
+        }
+        localStorage.setItem("highScores", JSON.stringify(storedScores));
+        location.reload();
+    })
+}
 
-// h3El.addEventListener("click", highScores);
+finishBtn.addEventListener("click", finalScore);
 
-// function highScores (event) {
-//     event.preventDefault;
-//     h3El.style.display = "none";
-//     h1El.textContent = "High Scores:";
-//     pEl.remove();
-//     start.remove();
-//     scoresList = document.createElement("ol");
-//     container.appendChild(scoresList);
+function highScores (event) {
+    event.preventDefault;
+    h3El.style.display = "none";
+    h1El.textContent = "High Scores:";
+    pEl.remove();
+    start.remove();
+    scoresList = document.createElement("ol");
+    container.style.borderColor = "#5900b3";
+    container.appendChild(scoresList);
 
-//     let storedScores = JSON.parse(localStorage.getItem("highScores"));
-//     if(storedScores !== null) {
-//         storedScores.sort(function(a, b){return b.score-a.score});
-//         for(var i=0; i<storedScores.length; i++) {
-//             var pastScore = storedScores[i];
-//             var displayScore = document.createElement("li");
-//             displayScore.setAttribute("class","score");
-//             displayScore.textContent = pastScore.name + " " + pastScore.score;
-//             scoresList.appendChild(displayScore);
-//         }
-//     }
+    let storedScores = JSON.parse(localStorage.getItem("highScores"));
+    if(storedScores !== null) {
+        storedScores.sort(function(a, b){return b.score-a.score});
+        for(var i=0; i<storedScores.length; i++) {
+            var pastScore = storedScores[i];
+            var displayScore = document.createElement("li");
+            displayScore.setAttribute("class","score");
+            displayScore.textContent = [i+1] + ". " + pastScore.name + " - " + pastScore.score + " point(s)";
+            scoresList.appendChild(displayScore);
+        }
+    }
 
 
-//     clear = document.createElement("button");
-//     playAgain = document.createElement("button");
-//     clear.textContent = "Clear Scores";
-//     playAgain.textContent = "Play Again!";
-//     container.appendChild(clear);
-//     container.appendChild(playAgain);
-//     clear.setAttribute("class","button");
-//     clear.setAttribute("id", "clear-btn");
-//     playAgain.setAttribute("class","button");
-//     playAgain.setAttribute("id", "play-again");
+    clear = document.createElement("button");
+    playAgain = document.createElement("button");
+    clear.textContent = "Clear Scores";
+    playAgain.textContent = "Play Again!";
+    container.appendChild(clear);
+    container.appendChild(playAgain);
+    clear.setAttribute("class","button");
+    clear.setAttribute("id", "clear-btn");
+    playAgain.setAttribute("class","button");
+    playAgain.setAttribute("id", "play-again");
 
-//     clear.addEventListener("click", function() {
-//         localStorage.clear();
-//         scoresList.innerHTML = "";
-//     })
+    clear.addEventListener("click", function() {
+        localStorage.clear();
+        scoresList.innerHTML = "";
+    })
 
-//     playAgain.addEventListener("click", function () {
-//         location.reload();
-//     })
-// }
+    playAgain.addEventListener("click", function () {
+        location.reload();
+    })
+}
 
-//TODO: have a message displayed based on how good the score is
+h3El.addEventListener("click", highScores);

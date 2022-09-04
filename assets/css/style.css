@@ -59,7 +59,7 @@ li {
 }
 
 li:hover {
-    color: white;
+    color: black;
 }
 
 .button {
@@ -71,7 +71,7 @@ li:hover {
 }
 
 form {
-    margin-bottom: 1%;
+    margin-bottom: 2%;
 }
 
 #submit-btn {
