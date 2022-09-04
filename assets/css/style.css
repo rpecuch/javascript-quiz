@@ -1,6 +1,5 @@
 header, 
 footer {
-    /* background: pink; */
     padding: 2%;
 }
 
@@ -32,10 +31,16 @@ h1,
 
 #container {
     border: 5px double black;
+    border-radius: 2px;
 }
 
 #start {
     margin-top: 2%;
+}
+
+.advance-btn {
+    margin-top: 1%;
+    cursor: pointer;
 }
 
 button:hover {
@@ -63,6 +68,14 @@ li:hover {
 
 .score {
     list-style-type: none;
+}
+
+form {
+    margin-bottom: 1%;
+}
+
+#submit-btn {
+    margin-left: 1%;
 }
 
 #clear-btn,
