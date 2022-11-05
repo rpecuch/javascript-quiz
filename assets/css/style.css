@@ -1,14 +1,18 @@
+* {
+    font-size: 110%;
+}
 header, 
 footer {
     padding: 2%;
+    background: black;
 }
 
 h3 {
     cursor: pointer;
-    border: 2px solid black;
     display: inline;
     padding: 0.5%;
     border-radius: 5px;
+    background: white;
 }
 
 h3:hover {
@@ -20,13 +24,17 @@ section {
     background-color: #5900b3;
     color: white;
     padding: 1%;
-    border-radius: 10px;
+    height: 75vh;
 }
 
 h1,
 #p {
     padding: 1%;
     border-radius: 5px;
+}
+
+h1 {
+    font-size: 200%;
 }
 
 #container {
@@ -36,11 +44,15 @@ h1,
 
 #start {
     margin-top: 2%;
+    padding: 1%;
+    border-radius: 10px;
 }
 
 .advance-btn {
     margin-top: 1%;
     cursor: pointer;
+    padding: 1%;
+    border-radius: 10px;
 }
 
 button:hover {
@@ -81,4 +93,8 @@ form {
 #clear-btn,
 #play-again {
     margin-bottom: 1%;
+}
+
+#message {
+    color: white;
 }
