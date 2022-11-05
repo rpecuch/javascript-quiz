@@ -2,6 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+
 ## Description
 
 The purpose of this project was to apply JavaScript and web API fundamentals to build a coding quiz application. During the development process, I learned how to apply document object methods and properties, utlilize event handlers, alter attributes of HTML elements using JavaScript, and write more complex JavaScript functions than I was previously able to. Furthermore, this application serves as a practice tool for technical assessments. In the near future I plan on refactoring this application using React to allow the user to choose from multiple different quiz topics.
